@@ -33,11 +33,14 @@ document
 
     if (messageInput.value !== '') {
       channel
-        .push('message:new', {
-          message: messageInput.value,
+        .push('message:new', { message: messageInput.value })
+        .receive('ok', () => {
+          messageInput.value = '';
+        })
+        .receive('error', ({ reason }) => {
+          alert(reason);
+          console.log(reason);
         });
-
-      messageInput.value = '';
     }
   });
 
