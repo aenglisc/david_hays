@@ -2,7 +2,7 @@ defmodule DavidHaysWeb.TranslatorChannel do
   use DavidHaysWeb, :channel
   @yandex_translate_api Application.get_env(:david_hays, :translator_api)
 
-  def join("translator:lobby", payload, socket) do
+  def join("translator:lobby", _payload, socket) do
     {:ok, socket}
   end
 
