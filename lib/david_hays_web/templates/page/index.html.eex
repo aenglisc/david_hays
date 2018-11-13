@@ -1,0 +1,7 @@
+<div class="inline">
+  <form id="new-message">
+    <input type="text" class="form-control" placeholder="Message" id="message-content" autofocus/>
+  </form>
+</div>
+
+<ul class="list-group mt-5" id="messages"></ul>

@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    command: 'mix phx.server'
+    ports:
+      - '4000:4000'
+    volumes:
+      - '~/.bash-history:/.bash-history'
+      - '.:/app:cached'
+      - '/tmp:/tmp:delegated'
+      - '.bashrc:/root/.bashrc:cached'
+      - '/var/run/docker.sock:/var/run/docker.sock:cached'
+      - '/var/tmp:/var/tmp:cached'
+      - '/tmp:/tmp:cached'
