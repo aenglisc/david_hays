@@ -26,19 +26,25 @@ channel
 document
   .querySelector('#new-message')
   .addEventListener('submit', (e) => {
+    const form = document.querySelector('#new-message');
     e.preventDefault();
+
     const messageInput = e
       .target
       .querySelector('#message-content');
 
-    if (messageInput.value !== '') {
+    if (!form.disabled && messageInput.value !== '') {
+      form.disabled = true;
+
       channel
         .push('message:new', { message: messageInput.value })
         .receive('ok', () => {
           messageInput.value = '';
+          form.disabled = false;
         })
         .receive('error', ({ reason }) => {
           alert(reason);
+          form.disabled = false;
           console.log(reason);
         });
     }
